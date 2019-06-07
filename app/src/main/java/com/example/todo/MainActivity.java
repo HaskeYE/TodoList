@@ -1,23 +1,36 @@
 package com.example.todo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
 import android.view.View;
+
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import android.view.MenuItem;
+
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,30 +39,49 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Список дел на сегодня
+        ListView listView = findViewById(R.id.todoToday);
+
+        //Петя, тут нужно то, откуда пойдет список
+        //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
+        // значение - это время выполнения
+
+
+        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this,
+                R.layout.list_item, Collections.<Map>emptyList());
+        listView.setAdapter(adapter);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Fab
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.fab:
+                        switchScreen(v);
+                        break;
+                }
             }
         });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        Date dateNow = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MM YY", new Locale("ru"));
-        String currentDate = sdf.format(dateNow);
+       /* //Working with date
+        String date_n = new SimpleDateFormat("MM dd, yyyy",
+                Locale.getDefault()).format(new Date());
         TextView text = (TextView) findViewById(R.id.myDateText);
-        text.setText(currentDate);
+        text.setText(date_n);*/
     }
 
     @Override
@@ -61,6 +93,7 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -102,5 +135,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void switchScreen(View view){
+        Intent intent = new Intent(this , NewTaskFirst.class);
+        startActivity(intent);
     }
 }

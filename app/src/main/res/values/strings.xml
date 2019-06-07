@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Todo</string>
+    <string name="app_name">Task Manager</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">тута дату надо</string>
@@ -7,8 +7,15 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="new_task">Создание новой задачи</string>
+    <string name="task_explanation">Опишите задачу</string>
+    <string name="add_task">Добавить задачу</string>
+    <string name="add_idea">Добавить идею</string>
+    <string name="a">switch</string>
+
     <string name="menu_home">TODAY</string>
     <string name="menu_gallery">LIST</string>
     <string name="menu_slideshow">IDEAS</string>
     <string name="menu_tools">ARCHIVE</string>
+    <string name="title_activity_new_task_first">NewTaskFirst</string>
 </resources>
