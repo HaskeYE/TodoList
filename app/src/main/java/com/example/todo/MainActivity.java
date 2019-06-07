@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity
         //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
         // значение - это время выполнения. emptylist на мапу меняй
 
-        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item,
-              new Map[] {articleMapOne, articleMapOne});
+        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
         listView.setAdapter(adapter);
 
 
@@ -144,10 +143,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public static Map<String, String> articleMapOne;
+    /*public static Map<String, String> articleMapOne;
     static {
         articleMapOne = new HashMap<>();
         articleMapOne.put("ar01", "Intro to Map");
         articleMapOne.put("ar02", "Some article");
-    }
+    }*/
 }
