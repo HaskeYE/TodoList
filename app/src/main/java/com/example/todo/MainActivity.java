@@ -27,8 +27,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.AbstractMap;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -44,11 +47,10 @@ public class MainActivity extends AppCompatActivity
 
         //Петя, тут нужно то, откуда пойдет список
         //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
-        // значение - это время выполнения
+        // значение - это время выполнения. emptylist на мапу меняй
 
-
-        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this,
-                R.layout.list_item, Collections.<Map>emptyList());
+        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item,
+              new Map[] {articleMapOne, articleMapOne});
         listView.setAdapter(adapter);
 
 
@@ -140,5 +142,12 @@ public class MainActivity extends AppCompatActivity
     public void switchScreen(View view){
         Intent intent = new Intent(this , NewTaskFirst.class);
         startActivity(intent);
+    }
+
+    public static Map<String, String> articleMapOne;
+    static {
+        articleMapOne = new HashMap<>();
+        articleMapOne.put("ar01", "Intro to Map");
+        articleMapOne.put("ar02", "Some article");
     }
 }
