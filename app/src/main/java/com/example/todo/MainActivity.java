@@ -1,39 +1,20 @@
 package com.example.todo;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
-import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-
-import android.view.MenuItem;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.ListFragment;
 
-import android.view.Menu;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.AbstractMap;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,16 +23,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Список дел на сегодня
-        ListView listView = findViewById(R.id.todoToday);
-
-        //Петя, тут нужно то, откуда пойдет список
-        //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
-        // значение - это время выполнения. emptylist на мапу меняй
-
-        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
-        listView.setAdapter(adapter);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,11 +49,16 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new ListFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
        /* //Working with date
         String date_n = new SimpleDateFormat("MM dd, yyyy",
                 Locale.getDefault()).format(new Date());
         TextView text = (TextView) findViewById(R.id.myDateText);
         text.setText(date_n);*/
+
     }
 
     @Override
@@ -122,21 +98,24 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        switch (id) {
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            case R.id.nav_home:
+                TodayList list = new TodayList();
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.fragment_container, list).commit();
+                break;
 
-        } else if (id == R.id.nav_slideshow) {
+            case R.id.nav_slideshow:
+                break;
 
-        } else if (id == R.id.nav_tools) {
-
+            case R.id.nav_tools:
+                break;
         }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
 
     public void switchScreen(View view){
         Intent intent = new Intent(this , NewTaskFirst.class);
