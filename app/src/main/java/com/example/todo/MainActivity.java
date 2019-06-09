@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ListFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
-       /* //Working with date
-        String date_n = new SimpleDateFormat("MM dd, yyyy",
+       /* //Working with date        String date_n = new SimpleDateFormat("MM dd, yyyy",
                 Locale.getDefault()).format(new Date());
         TextView text = (TextView) findViewById(R.id.myDateText);
         text.setText(date_n);*/
