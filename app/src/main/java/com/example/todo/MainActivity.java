@@ -45,9 +45,7 @@ public class MainActivity extends AppCompatActivity
         //Список дел на сегодня
         ListView listView = findViewById(R.id.todoToday);
 
-        //Петя, тут нужно то, откуда пойдет список
-        //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
-        // значение - это время выполнения. emptylist на мапу меняй
+        DB db = new DB(this);
 
         ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
         listView.setAdapter(adapter);

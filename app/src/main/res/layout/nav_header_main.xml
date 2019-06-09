@@ -26,7 +26,6 @@
     <TextView
         android:id="@+id/myDateText"
         android:layout_width="match_parent"
-        android:id="@+id/clock1"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         />
