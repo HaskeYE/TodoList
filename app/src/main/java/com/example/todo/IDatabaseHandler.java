@@ -10,4 +10,3 @@ public interface IDatabaseHandler {
     public int updateIdea(Idea idea);
     public void deleteIdea(Idea idea);
     public void deleteAll();
-}

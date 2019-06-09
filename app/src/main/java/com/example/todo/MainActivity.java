@@ -45,6 +45,14 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //Список дел на сегодня
+        ListView listView = findViewById(R.id.todoToday);
+
+        DB db = new DB(this);
+
+        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
+        listView.setAdapter(adapter);
 
         DB db = new DB(this);
 

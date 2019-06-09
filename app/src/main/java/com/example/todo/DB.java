@@ -52,35 +52,44 @@ public class DB extends SQLiteOpenHelper implements BaseColumns {
     }
 
     /**
-     @Override
-     public Idea getIdea(int id) {
-     SQLiteDatabase db = this.getReadableDatabase();
-     Cursor cursor = db.query(TABLE_IDEAS, new String[] { KEY_ID,
-     KEY_HEAD, KEY_DATA, KEY_TIME }, KEY_ID + "=?",
-     new String[] { String.valueOf(id) }, null, null, null, null);
-     if (cursor != null){
-     cursor.moveToFirst();
-     }
-     Idea idea = new Idea(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
-     return idea;
-     }
-     @Override
-     public List<Idea> getAllContacts() {
-     List<Idea> contactList = new ArrayList<Idea>();
-     String selectQuery = "SELECT  * FROM " + TABLE_IDEAS;
-     SQLiteDatabase db = this.getWritableDatabase();
-     Cursor cursor = db.rawQuery(selectQuery, null);
-     if (cursor.moveToFirst()) {
-     do {
-     Idea idea = new Idea();
-     idea.setID(Integer.parseInt(cursor.getString(0)));
-     idea.setHead(cursor.getString(1));
-     idea.setPhoneNumber(cursor.getString(2));
-     contactList.add(idea);
-     } while (cursor.moveToNext());
-     }
-     return contactList;
-     }
+
+    @Override
+    public Idea getIdea(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_IDEAS, new String[] { KEY_ID,
+                        KEY_HEAD, KEY_DATA, KEY_TIME }, KEY_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Idea idea = new Idea(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+
+        return idea;
+    }
+
+    @Override
+    public List<Idea> getAllContacts() {
+        List<Idea> contactList = new ArrayList<Idea>();
+        String selectQuery = "SELECT  * FROM " + TABLE_IDEAS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Idea idea = new Idea();
+                idea.setID(Integer.parseInt(cursor.getString(0)));
+                idea.setHead(cursor.getString(1));
+                idea.setPhoneNumber(cursor.getString(2));
+                contactList.add(idea);
+            } while (cursor.moveToNext());
+        }
+
+        return contactList;
+    }
      **/
 
     public int updateIdea(Idea idea) {
@@ -107,4 +116,3 @@ public class DB extends SQLiteOpenHelper implements BaseColumns {
         db.delete(TABLE_IDEAS, null, null);
         db.close();
     }
-}
