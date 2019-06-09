@@ -22,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.ListFragment;
 
 import android.view.Menu;
 import android.widget.ArrayAdapter;
@@ -53,8 +54,6 @@ public class MainActivity extends AppCompatActivity
 
         ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
         listView.setAdapter(adapter);
-
-        DB db = new DB(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

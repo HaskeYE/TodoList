@@ -9,29 +9,27 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.Map;
 
-
-public class TodayList extends Fragment {
+public class IdeasList extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_today_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_ideas_list, container, false);
         //Список дел на сегодня
-        ListView listView = view.findViewById(R.id.todoToday);
-        getActivity().setTitle("Today List");
+        ListView listView = view.findViewById(R.id.ideasList);
+        getActivity().setTitle("Ideas List");
 
         //Петя, тут нужно то, откуда пойдет список
+        String[] ideas = new String[/*к-во идей на данный момент в int (четверка там просто так)*/4];
         //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
         // значение - это время выполнения. emptylist на мапу меняй
 
-        ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(getActivity(), R.layout.list_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, ideas);
         listView.setAdapter(adapter);
         return view;
     }
 }
-
-

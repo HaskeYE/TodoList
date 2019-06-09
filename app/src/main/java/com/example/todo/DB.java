@@ -9,6 +9,7 @@ import android.provider.BaseColumns;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DB extends SQLiteOpenHelper implements BaseColumns {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "IdeasManager";
