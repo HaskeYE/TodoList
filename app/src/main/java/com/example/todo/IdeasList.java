@@ -25,7 +25,7 @@ public class IdeasList extends Fragment {
         //Петя, тут нужно то, откуда пойдет список
         String[] ideas = new String[/*к-во идей на данный момент в int (четверка там просто так)*/4];
         //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
-        // значение - это время выполнения. emptylist на мапу меняй
+        //значение - это время выполнения. emptylist на мапу меняй
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, ideas);
