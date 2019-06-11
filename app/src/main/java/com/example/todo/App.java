@@ -60,7 +60,7 @@ public class App extends Application {
                 .build();
     }
 
-    public App getInstance() {
+    public static App getInstance() {
         return instance;
     }
 

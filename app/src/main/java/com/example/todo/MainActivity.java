@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         //Список дел на сегодня
         ListView listView = findViewById(R.id.todoToday);
 
-        //App.AppDatabase db = App.getInstance().getDatabase(); видимо куда то переместить
+        App.AppDatabase db = App.getInstance().getDatabase();
         //App.IdeasDao ideaDao = db.ideasDao();
 
         ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
