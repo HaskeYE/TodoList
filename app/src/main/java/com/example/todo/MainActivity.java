@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         ListView listView = findViewById(R.id.todoToday);
 
         App.AppDatabase db = App.getInstance().getDatabase();
-        //App.IdeasDao ideaDao = db.ideasDao();
+        App.IdeasDao ideaDao = db.ideasDao();
 
         ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
         listView.setAdapter(adapter);

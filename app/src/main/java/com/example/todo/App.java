@@ -18,13 +18,42 @@ public class App extends Application {
     @Entity
     public class Ideas {
         @PrimaryKey
-        public long id;
+        private long id;
+        private String head;
+        private String data;
+        private String time;
 
-        public String head;
+        public long getId() {
+            return id;
+        }
 
-        public String data;
+        public void setId(long id) {
+            this.id = id;
+        }
 
-        public String time;
+        public String getHead() {
+            return head;
+        }
+
+        public void setHead(String head) {
+            this.head = head;
+        }
+
+        public String getData() {
+            return data;
+        }
+
+        public void setData(String data) {
+            this.data = data;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
+        }
     }
 
     @Dao

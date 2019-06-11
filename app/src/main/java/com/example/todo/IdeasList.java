@@ -9,6 +9,9 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class IdeasList extends Fragment {
 
@@ -23,7 +26,15 @@ public class IdeasList extends Fragment {
         getActivity().setTitle("Ideas List");
 
         //Петя, тут нужно то, откуда пойдет список
-        String[] ideas = new String[/*к-во идей на данный момент в int (четверка там просто так)*/4];
+        App.AppDatabase db = App.getInstance().getDatabase();
+        App.IdeasDao ideaDao = db.ideasDao();
+
+        List<String> ideas = new ArrayList<>();
+        for(App.Ideas x: ideaDao.getAll()) {
+            ideas.add(x.getHead());
+        }
+
+                //String[] ideas = new String[/*к-во идей на данный момент в int (четверка там просто так)*/4];
         //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
         //значение - это время выполнения. emptylist на мапу меняй
 
