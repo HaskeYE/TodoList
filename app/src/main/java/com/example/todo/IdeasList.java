@@ -26,20 +26,24 @@ public class IdeasList extends Fragment {
         getActivity().setTitle("Ideas List");
 
         //Петя, тут нужно то, откуда пойдет список
-        App.AppDatabase db = App.getInstance().getDatabase();
+        App.DataHelper db = App.getInstance().getDatabase();
         App.IdeasDao ideaDao = db.ideasDao();
 
-        List<String> ideas = new ArrayList<>();
-        for(App.Ideas x: ideaDao.getAll()) {
-            ideas.add(x.getHead());
+        List<Ideas> ideas = ideaDao.getAll();
+        List<String> ideasHeads = new ArrayList<>();
+
+        for (Ideas x: ideas) {
+            ideasHeads.add(x.getHead());
         }
+
+
 
                 //String[] ideas = new String[/*к-во идей на данный момент в int (четверка там просто так)*/4];
         //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
         //значение - это время выполнения. emptylist на мапу меняй
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, ideas);
+                android.R.layout.simple_list_item_1, ideasHeads);
         listView.setAdapter(adapter);
         return view;
     }

@@ -7,54 +7,17 @@ import androidx.room.*;
 import java.util.List;
 
 public class App extends Application {
-    private static App instance;
-    private AppDatabase database;
+
 
     @androidx.room.Database(entities = {Ideas.class}, version = 1)
-    public abstract class AppDatabase extends RoomDatabase {
+    public abstract class DataHelper extends RoomDatabase {
         public abstract IdeasDao ideasDao();
     }
 
-    @Entity
-    public class Ideas {
-        @PrimaryKey
-        private long id;
-        private String head;
-        private String data;
-        private String time;
+    private static App instance;
+    private DataHelper database;
 
-        public long getId() {
-            return id;
-        }
 
-        public void setId(long id) {
-            this.id = id;
-        }
-
-        public String getHead() {
-            return head;
-        }
-
-        public void setHead(String head) {
-            this.head = head;
-        }
-
-        public String getData() {
-            return data;
-        }
-
-        public void setData(String data) {
-            this.data = data;
-        }
-
-        public String getTime() {
-            return time;
-        }
-
-        public void setTime(String time) {
-            this.time = time;
-        }
-    }
 
     @Dao
     public interface IdeasDao {
@@ -84,7 +47,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        database = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database")
+        database = Room.databaseBuilder(getApplicationContext(), DataHelper.class, "database")
                 .allowMainThreadQueries()
                 .build();
     }
@@ -93,7 +56,7 @@ public class App extends Application {
         return instance;
     }
 
-    public AppDatabase getDatabase() {
+    public DataHelper getDatabase() {
         return database;
     }
 }

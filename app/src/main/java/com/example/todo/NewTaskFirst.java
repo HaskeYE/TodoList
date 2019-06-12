@@ -125,8 +125,14 @@ public class NewTaskFirst extends AppCompatActivity {
 
     //Saving Ideas/Tasks
     private void saveIdea(String str) {
-    if (!str.equals("") &&
-            str != null) //записать str в столбец с идеями
+        App.DataHelper db = App.getInstance().getDatabase();
+        App.IdeasDao ideaDao = db.ideasDao();
+        //записать str в столбец с идеями
+        if (!str.equals("") && str != null) {
+            Ideas idea = new Ideas();
+            idea.setHead(str);
+            ideaDao.insert(idea);
+        }
     }
 
     private void saveTask() {
