@@ -5,7 +5,7 @@ import androidx.room.InvalidationTracker;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@androidx.room.Database(entities = {Ideas.class}, version = 1)
+@androidx.room.Database(entities = {Ideas.class}, version = 1,exportSchema = false)
 public abstract class DataHelper extends RoomDatabase {
     public abstract IdeasDao ideasDao();
 
