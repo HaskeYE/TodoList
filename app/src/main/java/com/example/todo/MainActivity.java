@@ -30,6 +30,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private DataHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         //Список дел на сегодня
         ListView listView = findViewById(R.id.todoToday);
 
-        DataHelper db = App.getInstance().getDatabase();
+        databaseHelper = App.getInstance().getDatabase();
 
 
         ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(this, R.layout.list_item);
