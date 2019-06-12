@@ -65,7 +65,7 @@ public class NewTaskFirst extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button5:
-                        saveIdea();
+                        saveIdea(editTextDescription.toString());
                         break;
                 }
             }
@@ -124,9 +124,9 @@ public class NewTaskFirst extends AppCompatActivity {
     }
 
     //Saving Ideas/Tasks
-    private void saveIdea() {
-    if (!editTextDescription.toString().equals("") &&
-            editTextDescription.toString() != null) //записать новую идею в столбец с идеями
+    private void saveIdea(String str) {
+    if (!str.equals("") &&
+            str != null) //записать str в столбец с идеями
     }
 
     private void saveTask() {
