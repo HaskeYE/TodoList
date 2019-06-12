@@ -83,9 +83,6 @@ public class NewTaskFirst extends AppCompatActivity {
         });
     }
 
-
-
-
     private void callTimePicker() {
         // получаем текущее время
         final Calendar cal = Calendar.getInstance();
@@ -125,8 +122,8 @@ public class NewTaskFirst extends AppCompatActivity {
 
     //Saving Ideas/Tasks
     private void saveIdea(String str) {
-        App.DataHelper db = App.getInstance().getDatabase();
-        App.IdeasDao ideaDao = db.ideasDao();
+        DataHelper db = App.getInstance().getDatabase();
+        IdeasDao ideaDao = db.ideasDao();
         //записать str в столбец с идеями
         if (!str.equals("") && str != null) {
             Ideas idea = new Ideas();

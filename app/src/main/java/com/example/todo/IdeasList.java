@@ -26,8 +26,8 @@ public class IdeasList extends Fragment {
         getActivity().setTitle("Ideas List");
 
         //Петя, тут нужно то, откуда пойдет список
-        App.DataHelper db = App.getInstance().getDatabase();
-        App.IdeasDao ideaDao = db.ideasDao();
+        DataHelper db = App.getInstance().getDatabase();
+        IdeasDao ideaDao = db.ideasDao();
 
         List<Ideas> ideas = ideaDao.getAll();
         List<String> ideasHeads = new ArrayList<>();
