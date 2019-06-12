@@ -65,7 +65,7 @@ public class NewTaskFirst extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button5:
-                        saveIdea(editTextDescription.toString());
+                        saveIdea(editTextDescription.getText().toString());
                         break;
                 }
             }
@@ -125,7 +125,7 @@ public class NewTaskFirst extends AppCompatActivity {
         DataHelper db = App.getInstance().getDatabase();
         IdeasDao ideaDao = db.ideasDao();
         //записать str в столбец с идеями
-        if (!str.equals("") && str != null) {
+        if (!str.equals("")) {
             Ideas idea = new Ideas();
             idea.setHead(str);
             ideaDao.insert(idea);
