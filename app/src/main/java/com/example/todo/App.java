@@ -8,14 +8,14 @@ import java.util.List;
 
 public class App extends Application {
 
-    private static App instance;
-    private DataHelper database;
+    public static App instance;
+    public DataHelper db;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        database = Room.databaseBuilder(this, DataHelper.class, "dadatabase")
+        db = Room.databaseBuilder(getApplicationContext(), DataHelper.class, "dadatabase")
                 .build();
     }
 
@@ -24,6 +24,6 @@ public class App extends Application {
     }
 
     public DataHelper getDatabase() {
-        return database;
+        return db;
     }
 }
