@@ -2,6 +2,7 @@ package com.example.todo;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,6 +67,7 @@ public class NewTaskFirst extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.button5:
                         saveIdea(editTextDescription.getText().toString());
+                        switchScreenBack(v);
                         break;
                 }
             }
@@ -134,5 +136,10 @@ public class NewTaskFirst extends AppCompatActivity {
 
     private void saveTask() {
 
+    }
+
+    public void switchScreenBack(View view){
+        Intent intent = new Intent(this , MainActivity.class);
+        startActivity(intent);
     }
 }

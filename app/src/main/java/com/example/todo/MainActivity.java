@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DataHelper db = App.getInstance().getDatabase();/*Room.databaseBuilder(getApplicationContext(), DataHelper.class, "db")
+        DataHelper db = App.getInstance().getDatabase();
+        /*Room.databaseBuilder(getApplicationContext(), DataHelper.class, "db")
                 .build();*/
 
         Log.d("s", String.valueOf(db==null));
