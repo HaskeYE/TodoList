@@ -125,11 +125,11 @@ public class NewTaskFirst extends AppCompatActivity {
         DataHelper db = App.getInstance().getDatabase();
         IdeasDao ideaDao = db.ideasDao();
         //записать str в столбец с идеями
-        if (!str.equals("")) {
+
             Ideas idea = new Ideas();
             idea.setHead(str);
             ideaDao.insert(idea);
-        }
+
     }
 
     private void saveTask() {

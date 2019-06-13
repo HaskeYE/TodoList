@@ -25,8 +25,6 @@ public class TodayList extends Fragment {
         getActivity().setTitle("Today List");
 
         //Петя, тут нужно то, откуда пойдет список
-        //Нужна в итоге мапа с названием todoMap, в которой ключ - дело, а
-        // значение - это время выполнения. emptylist на мапу меняй
 
         ArrayAdapter<Map> adapter = new ArrayAdapter<Map>(getActivity(), R.layout.list_item);
         listView.setAdapter(adapter);

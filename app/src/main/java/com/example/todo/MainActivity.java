@@ -1,10 +1,11 @@
-package com.example.todo; ///
+package com.example.todo;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -27,7 +28,6 @@ import android.widget.ListView;
 
 import java.util.Map;
 
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -38,10 +38,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        databaseHelper = App.getInstance().getDatabase();
+        DataHelper db = App.getInstance().getDatabase();/*Room.databaseBuilder(getApplicationContext(), DataHelper.class, "db")
+                .build();*/
+
+        Log.d("s", String.valueOf(db==null));
+
+        //databaseHelper = App.getInstance().getDatabase();
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         //Fab
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -69,10 +76,12 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ListFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
-       /* //Working with date        String date_n = new SimpleDateFormat("MM dd, yyyy",
+
+/*Working with date        String date_n = new SimpleDateFormat("MM dd, yyyy",
                 Locale.getDefault()).format(new Date());
         TextView text = (TextView) findViewById(R.id.myDateText);
         text.setText(date_n);*/
+
 
     }
 
@@ -139,11 +148,4 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this , NewTaskFirst.class);
         startActivity(intent);
     }
-
-    /*public static Map<String, String> articleMapOne;
-    static {
-        articleMapOne = new HashMap<>();
-        articleMapOne.put("ar01", "Intro to Map");
-        articleMapOne.put("ar02", "Some article");
-    }*/
 }

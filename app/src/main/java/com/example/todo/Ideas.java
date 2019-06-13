@@ -5,15 +5,16 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Ideas {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private long id;
     private String head;
     private String data;
     private String time;
 
-    Ideas() {}
 
-    Ideas(String h) {
+    public Ideas(){}
+
+    public Ideas(String h) {
         setHead(h);
     }
 
