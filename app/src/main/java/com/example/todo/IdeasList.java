@@ -26,7 +26,7 @@ public class IdeasList extends Fragment {
         ListView listView = view.findViewById(R.id.ideasList);
         getActivity().setTitle("Ideas List");
 
-        //Петя, тут нужно то, откуда пойдет список
+        //То, откуда пойдет список
         DataHelper db = App.getInstance().getDatabase();
         IdeasDao ideaDao = db.ideasDao();
 

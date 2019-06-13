@@ -122,6 +122,9 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_slideshow:
+                IdeasList listIdeas = new IdeasList();
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.fragment_container, listIdeas).commit();
                 break;
 
             case R.id.nav_tools:
