@@ -22,6 +22,12 @@ public interface IdeasDao {
     @Query("SELECT * FROM Ideas WHERE data = :data")
     List<Ideas> getByData(String data);
 
+    @Query("DELETE FROM Ideas")
+    void deletAll();
+
+    @Query("DELETE FROM ideas WHERE head = :head")
+    void deletByHead(String head);
+
     @Insert
     void insert(Ideas idea);
 

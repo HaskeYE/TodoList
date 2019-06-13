@@ -130,12 +130,14 @@ public class NewTaskFirst extends AppCompatActivity {
     private void saveIdea(String str) {
         DataHelper db = App.getInstance().getDatabase();
         IdeasDao ideaDao = db.ideasDao();
-        //записать str в столбец с идеями
 
-            Ideas idea = new Ideas();
-            idea.setHead(str);
-            ideaDao.insert(idea);
+        if (!ideaDao.getByHead(str).isEmpty()) {
+            return; //вот сюда!!!!!!
+        }
 
+        Ideas idea = new Ideas();
+        idea.setHead(str);
+        ideaDao.insert(idea);
     }
 
     private void saveTask() {
