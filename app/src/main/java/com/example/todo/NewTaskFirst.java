@@ -14,11 +14,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class NewTaskFirst extends AppCompatActivity {
     private Button btnDatePicker, btnTimePicker, btnSaveTask, btnSaveIdea;
     private EditText editTextDate, editTextTime, editTextDescription;
+
+    // database
+    private DataHelper db = App.getInstance().getDatabase();
+    private IdeasDao ideaDao = db.ideasDao();
 
     // var for date and time
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -126,11 +134,18 @@ public class NewTaskFirst extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    private Map<String, String> today(String date) {
+        Map<String, String> forToday = new HashMap<>();
+
+        for (Ideas x: ideaDao.getByData(date)) {
+            forToday.put(x.getHead(), x.getTime());
+        }
+
+        return forToday;
+    }
+
     //Saving Ideas/Tasks
     private void saveIdea(String str) {
-        DataHelper db = App.getInstance().getDatabase();
-        IdeasDao ideaDao = db.ideasDao();
-
         if (!ideaDao.getByHead(str).isEmpty()) {
             return; //вот сюда!!!!!!
         }
