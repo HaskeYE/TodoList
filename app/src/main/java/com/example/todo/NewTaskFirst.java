@@ -150,8 +150,19 @@ public class NewTaskFirst extends AppCompatActivity {
         ideaDao.insert(idea);
     }
 
-    private void saveTask() {
+    private void saveTask(String head, String date, String time) {
         //editTextDate & editTextTime toString оба соответсвенно
+        if (!ideaDao.getByHead(head).isEmpty()) {
+            return; // error
+        }
+
+        Ideas idea = new Ideas();
+        idea.setHead(head);
+        idea.setData(date);
+        idea.setTime(time);
+
+        ideaDao.insert(idea);
+
         Toast toast = Toast.makeText(getApplicationContext(),
                 editTextDate.toString(), Toast.LENGTH_SHORT);
         toast.show();
