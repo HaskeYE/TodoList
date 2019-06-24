@@ -91,6 +91,10 @@ public class NewTaskFirst extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.button4:
                         saveTask();
+                        /*Toast toast = Toast.makeText(getApplicationContext(),
+                                "Вы создали новую идею!", Toast.LENGTH_SHORT);
+                        toast.show();*/
+                        switchScreenBack(v);
                         break;
                 }
             }
@@ -134,15 +138,6 @@ public class NewTaskFirst extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private Map<String, String> today(String date) {
-        Map<String, String> forToday = new HashMap<>();
-
-        for (Ideas x: ideaDao.getByData(date)) {
-            forToday.put(x.getHead(), x.getTime());
-        }
-
-        return forToday;
-    }
 
     //Saving Ideas/Tasks
     private void saveIdea(String str) {
@@ -156,7 +151,10 @@ public class NewTaskFirst extends AppCompatActivity {
     }
 
     private void saveTask() {
-
+        //editTextDate & editTextTime toString оба соответсвенно
+        Toast toast = Toast.makeText(getApplicationContext(),
+                editTextDate.toString(), Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     public void switchScreenBack(View view){
