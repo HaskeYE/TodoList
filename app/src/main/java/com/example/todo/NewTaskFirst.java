@@ -90,10 +90,11 @@ public class NewTaskFirst extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button4:
-                        saveTask();
-                        /*Toast toast = Toast.makeText(getApplicationContext(),
-                                "Вы создали новую идею!", Toast.LENGTH_SHORT);
-                        toast.show();*/
+                        saveTask(editTextDescription.getText().toString(),
+                                editTextDate.getText().toString(), editTextTime.getText().toString());
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                "Вы создали новую задачу!", Toast.LENGTH_SHORT);
+                        toast.show();
                         switchScreenBack(v);
                         break;
                 }
