@@ -152,7 +152,6 @@ public class NewTaskFirst extends AppCompatActivity {
     }
 
     private void saveTask(String head, String date, String time) {
-        //editTextDate & editTextTime toString оба соответсвенно
         if (!ideaDao.getByHead(head).isEmpty()) {
             return; // error
         }
@@ -163,10 +162,6 @@ public class NewTaskFirst extends AppCompatActivity {
         idea.setTime(time);
 
         ideaDao.insert(idea);
-
-        Toast toast = Toast.makeText(getApplicationContext(),
-                editTextDate.toString(), Toast.LENGTH_SHORT);
-        toast.show();
     }
 
     public void switchScreenBack(View view){
