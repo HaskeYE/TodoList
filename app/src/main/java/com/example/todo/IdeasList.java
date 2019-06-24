@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -23,7 +26,7 @@ public class IdeasList extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ideas_list, container, false);
         //Список дел на сегодня
-        ListView listView = view.findViewById(R.id.ideasList);
+        final ListView listView = view.findViewById(R.id.ideasList);
         getActivity().setTitle("Ideas List");
 
         //То, откуда пойдет список
@@ -40,6 +43,19 @@ public class IdeasList extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, ideasHeads);
         listView.setAdapter(adapter);
+        //Deleting Idea
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                TextView textView = view.findViewById(R.id.ideasList);
+                String text = textView.getText().toString();
+                //Удалить text из sql твоей
+
+
+                Toast toast = Toast.makeText(getContext(),
+                        "Идея удалена", Toast.LENGTH_SHORT);
+                toast.show();
+            }});
         return view;
     }
 }
