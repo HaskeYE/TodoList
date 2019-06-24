@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,11 @@ public class TodayList extends Fragment {
         getActivity().setTitle("Today List");
 
         //Getting today date
-        String date = " ";
+        final Calendar cal = Calendar.getInstance();
+        int year =  cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        String date = day + "." + (month + 1) + "." + year;
 
         //Tasks for today by today date
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
