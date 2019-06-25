@@ -13,6 +13,12 @@ public interface IdeasDao {
     @Query("SELECT * FROM Ideas")
     List<Ideas> getAll();
 
+    @Query("SELECT * FROM Ideas WHERE data IS NULL AND time IS NULL")
+    List<Ideas> getAllIdeas();
+
+    @Query("SELECT * FROM Ideas WHERE data IS NOT NULL AND time IS NOT NULL")
+    List<Ideas> getAllTasks();
+
     @Query("SELECT * FROM Ideas WHERE id = :id")
     Ideas getById(long id);
 
