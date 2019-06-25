@@ -73,17 +73,9 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ListFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
-
-/*Working with date        String date_n = new SimpleDateFormat("MM dd, yyyy",
-                Locale.getDefault()).format(new Date());
-        TextView text = (TextView) findViewById(R.id.myDateText);
-        text.setText(date_n);*/
-
-
+        TodayList list = new TodayList();
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, list).commit();
     }
 
     @Override
