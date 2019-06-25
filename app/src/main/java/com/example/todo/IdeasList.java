@@ -44,7 +44,7 @@ public class IdeasList extends Fragment {
             ideasHeads.add(x.getHead());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, ideasHeads);
         listView.setAdapter(adapter);
 
