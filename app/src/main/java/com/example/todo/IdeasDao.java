@@ -22,6 +22,9 @@ public interface IdeasDao {
     @Query("SELECT * FROM Ideas WHERE data = :data")
     List<Ideas> getByData(String data);
 
+    @Query("SELECT * FROM Ideas WHERE data IS NULL")
+    List<Ideas> getAllIdeas();
+
     @Query("DELETE FROM Ideas")
     void deletAll();
 

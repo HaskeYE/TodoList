@@ -33,7 +33,7 @@ public class IdeasList extends Fragment {
         DataHelper db = App.getInstance().getDatabase();
         final IdeasDao ideaDao = db.ideasDao();
 
-        List<Ideas> ideas = ideaDao.getAll();
+        List<Ideas> ideas = ideaDao.getAllIdeas();
         List<String> ideasHeads = new ArrayList<>();
 
         for (Ideas x: ideas) {
