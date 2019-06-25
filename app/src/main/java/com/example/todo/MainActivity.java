@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity
                         replace(R.id.fragment_container, listIdeas).commit();
                 break;
 
-            case R.id.nav_tools:
+            /**case R.id.nav_tools:
                 Archieve Archieve = new Archieve();
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container, Archieve).commit();
-                break;
+                break;**/
         }
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);

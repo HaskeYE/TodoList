@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.HashMap;
 
 
@@ -39,12 +40,14 @@ public class TodayList extends Fragment {
         //Tasks for today by today date
         ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
         HashMap<String, String> map;
+
         for (Ideas x: ideaDao.getByData(date)) {
             map = new HashMap<>();
             map.put("Time", x.getTime());
             map.put("Head", x.getHead());
             arrayList.add(map);
         }
+
         if (arrayList.size() < 1) {
             Toast toast = Toast.makeText(getActivity(),
                     "Задач на сегодня нет", Toast.LENGTH_LONG);

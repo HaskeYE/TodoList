@@ -39,7 +39,7 @@ public class Archieve extends Fragment{
             ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
             HashMap<String, String> map;
             //Здесь загони все таски там где date там список всех и все заработает
-            for (Ideas x: ideaDao.getByData(date)) {
+            for (Ideas x: ideaDao.getAllTasks()) {
                 map = new HashMap<>();
                 map.put("Time", x.getTime());
                 map.put("Head", x.getHead());
@@ -58,6 +58,7 @@ public class Archieve extends Fragment{
                     new int[]{R.id.text_view_member_id, R.id.text_view_name,
                             R.id.text_view_phone});
             listView.setAdapter(adapter);
+        return view;
         }
     }
 
