@@ -31,7 +31,7 @@ public class IdeasList extends Fragment {
 
         //То, откуда пойдет список
         DataHelper db = App.getInstance().getDatabase();
-        IdeasDao ideaDao = db.ideasDao();
+        final IdeasDao ideaDao = db.ideasDao();
 
         List<Ideas> ideas = ideaDao.getAll();
         List<String> ideasHeads = new ArrayList<>();
@@ -50,6 +50,7 @@ public class IdeasList extends Fragment {
                 TextView textView = view.findViewById(R.id.ideasList);
                 String text = textView.getText().toString();
                 //Удалить text из sql твоей
+                ideaDao.deletByHead(text);
 
 
                 Toast toast = Toast.makeText(getContext(),
