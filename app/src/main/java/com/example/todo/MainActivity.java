@@ -2,31 +2,19 @@ package com.example.todo;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
-import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-
-import android.view.MenuItem;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.ListFragment;
-import androidx.room.Room;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.view.Menu;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.Map;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -129,11 +117,11 @@ public class MainActivity extends AppCompatActivity
                         replace(R.id.fragment_container, listIdeas).commit();
                 break;
 
-            /**case R.id.nav_tools:
+            case R.id.nav_tools:
                 Archieve Archieve = new Archieve();
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.fragment_container, Archieve).commit();
-                break;**/
+                break;
         }
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);

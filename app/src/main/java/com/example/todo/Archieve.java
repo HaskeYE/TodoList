@@ -38,7 +38,6 @@ public class Archieve extends Fragment{
 
             ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
             HashMap<String, String> map;
-            //Здесь загони все таски там где date там список всех и все заработает
             for (Ideas x: ideaDao.getAllTasks()) {
                 map = new HashMap<>();
                 map.put("Time", x.getTime());

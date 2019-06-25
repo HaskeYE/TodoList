@@ -72,6 +72,19 @@ public class IdeasList extends Fragment {
                 // по позиции получаем выбранный элемент
                 String selectedItem = ideasHeads.get(pos);
                 ideaDao.deletByHead(selectedItem);
+
+                //Reload list
+                List<Ideas> ideas = ideaDao.getAll();
+                final List<String> ideasHeads = new ArrayList<>();
+
+                for (Ideas x: ideas) {
+                    ideasHeads.add(x.getHead());
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                        android.R.layout.simple_list_item_1, ideasHeads);
+                listView.setAdapter(adapter);
+
                 Toast toast = Toast.makeText(getContext(),
                         "Идея удалена", Toast.LENGTH_SHORT);
                 toast.show();
