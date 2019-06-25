@@ -1,5 +1,8 @@
 package com.example.todo;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -17,7 +19,9 @@ import java.util.List;
 
 
 public class IdeasList extends Fragment {
-
+    AlertDialog.Builder ad;
+    Context context;
+    int pos;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +38,7 @@ public class IdeasList extends Fragment {
         final IdeasDao ideaDao = db.ideasDao();
 
         List<Ideas> ideas = ideaDao.getAll();
-        List<String> ideasHeads = new ArrayList<>();
+        final List<String> ideasHeads = new ArrayList<>();
 
         for (Ideas x: ideas) {
             ideasHeads.add(x.getHead());
@@ -43,20 +47,50 @@ public class IdeasList extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, ideasHeads);
         listView.setAdapter(adapter);
-        //Deleting Idea
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                TextView textView = view.findViewById(R.id.ideasList);
-                String text = textView.getText().toString();
-                //Удалить text из sql твоей
-                ideaDao.deletByHead(text);
 
 
+        //Deleting idea
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id)
+            {
+                pos = position;
+                ad.show();
+            }});
+
+        String title = "Удаление";
+        String message = "Хотите ли вы удалить данную идею?";
+        String button1String = "Да";
+        String button2String = "Нет";
+
+        context = getActivity();
+        ad = new AlertDialog.Builder(context);
+        ad.setTitle(title);  // заголовок
+        ad.setMessage(message); // сообщение
+        ad.setPositiveButton(button1String, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int arg1) {
+                // по позиции получаем выбранный элемент
+                String selectedItem = ideasHeads.get(pos);
+                ideaDao.deletByHead(selectedItem);
                 Toast toast = Toast.makeText(getContext(),
                         "Идея удалена", Toast.LENGTH_SHORT);
                 toast.show();
-            }});
+            }
+        });
+        ad.setNegativeButton(button2String, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int arg1) {
+                Toast.makeText(context, "Удаление отменено",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        ad.setCancelable(true);
+        ad.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            public void onCancel(DialogInterface dialog) {
+            }
+        });
+
+
         return view;
     }
 }
+
